@@ -8,8 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import biophics.mdot.R;
+import com.applandeo.materialcalendarview.CalendarView;
+import com.applandeo.materialcalendarview.EventDay;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import biophics.mdot.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -65,7 +71,8 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        final View v = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -100,4 +107,6 @@ public class DashboardFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

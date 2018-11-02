@@ -112,7 +112,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_home, container, false);
-        SwipeButton swipeButton = (SwipeButton) v.findViewById(R.id.swipe_btn);
+        SwipeButton swipeButton = v.findViewById(R.id.swipe_btn);
         swipeButton.setOnStateChangeListener(new OnStateChangeListener() {
             @Override
             public void onStateChange(boolean active) {
