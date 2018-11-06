@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "827869507891",
+    "firebase_url": "https://mdot-221706.firebaseio.com",
+    "project_id": "mdot-221706",
+    "storage_bucket": "mdot-221706.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827869507891:android:154d26cd18c90c7a",
+        "android_client_info": {
+          "package_name": "biophics.mdot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "827869507891-aunm387eev8o46k2ks2mo0quep71rpeh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "biophics.mdot",
+            "certificate_hash": "a01fedf7e193afd30e8dd5299c014e69037c0344"
+          }
+        },
+        {
+          "client_id": "827869507891-0kid2b4qlso82k9ujhrfe9rm0luli451.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhCvGuD13G25Tmhns2_TvQwcsrcyXiMMI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "827869507891-0kid2b4qlso82k9ujhrfe9rm0luli451.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
