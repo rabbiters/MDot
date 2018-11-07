@@ -9,17 +9,30 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import com.ebanx.swipebtn.OnStateChangeListener;
 import com.ebanx.swipebtn.SwipeButton;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import biophics.mdot.Activity.MainActivity;
 import biophics.mdot.R;
+
+import static android.support.constraint.Constraints.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -117,6 +130,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onStateChange(boolean active) {
                 createNotification("กินยาด้วยครับ", getActivity());
+                Firestore();
                 Toast.makeText(getActivity(), "True.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -177,5 +191,39 @@ public class HomeFragment extends Fragment {
         }
         Notification notification = builder.build();
         notifManager.notify(NOTIFY_ID, notification);
+    }
+
+    public void Firestore() {
+        SimpleDateFormat s = new SimpleDateFormat("ddMMyyyyhhmmss");
+        String format = s.format(new Date());
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        Map<String, Object> TBL_TB_DOT = new HashMap<>();
+        TBL_TB_DOT.put("TB_DOT_BY", "Pye");
+        TBL_TB_DOT.put("TB_DOT_DATE", "07-Nov-18");
+        TBL_TB_DOT.put("TB_DOT_ID", "Test1");
+        TBL_TB_DOT.put("TB_DOT_STATUS", "1");
+        TBL_TB_DOT.put("TB_DOT_TIME", "1:14PM");
+        TBL_TB_DOT.put("TB_DOT_TIMESTAMP", format);
+        TBL_TB_DOT.put("TB_DOT_WARRING", "2");
+        TBL_TB_DOT.put("TB_INFO_TELL", "0851676165");
+
+
+        db.collection("TBL_TB_DOT")
+                .add(TBL_TB_DOT)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID:" + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
+
     }
 }
