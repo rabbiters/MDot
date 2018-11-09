@@ -21,10 +21,14 @@ import com.ebanx.swipebtn.OnStateChangeListener;
 import com.ebanx.swipebtn.SwipeButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -193,21 +197,37 @@ public class HomeFragment extends Fragment {
         notifManager.notify(NOTIFY_ID, notification);
     }
 
-    public void Firestore() {
-        SimpleDateFormat s = new SimpleDateFormat("ddMMyyyyhhmmss");
-        String format = s.format(new Date());
+    public String getValue() {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String date = df.format(Calendar.getInstance().getTime());
+        return date;
+    }
 
+    public String getTime() {
+        DateFormat df = new SimpleDateFormat("HH:mm:ss");
+        String date = df.format(Calendar.getInstance().getTime());
+        return date;
+    }
+
+    public String getTimeStamp() {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String date = df.format(Calendar.getInstance().getTime());
+        return date;
+    }
+    public void Firestore() {
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Map<String, Object> TBL_TB_DOT = new HashMap<>();
         TBL_TB_DOT.put("TB_DOT_BY", "Pye");
-        TBL_TB_DOT.put("TB_DOT_DATE", "07-Nov-18");
+        TBL_TB_DOT.put("TB_DOT_DATE", getValue());
         TBL_TB_DOT.put("TB_DOT_ID", "Test1");
         TBL_TB_DOT.put("TB_DOT_STATUS", "1");
-        TBL_TB_DOT.put("TB_DOT_TIME", "1:14PM");
-        TBL_TB_DOT.put("TB_DOT_TIMESTAMP", format);
+        TBL_TB_DOT.put("TB_DOT_TIME", getTime());
+        TBL_TB_DOT.put("TB_DOT_TIMESTAMP", getTimeStamp());
         TBL_TB_DOT.put("TB_DOT_WARRING", "2");
-        TBL_TB_DOT.put("TB_INFO_TELL", "0851676165");
+        TBL_TB_DOT.put("TB_INFO_TELL", firebaseUser.getPhoneNumber());
 
 
         db.collection("TBL_TB_DOT")
