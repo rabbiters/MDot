@@ -29,7 +29,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -214,6 +213,15 @@ public class HomeFragment extends Fragment {
         String date = df.format(Calendar.getInstance().getTime());
         return date;
     }
+/*
+    public String getStatus(String status_m){
+        String status = "0";
+        if(status_m){
+
+        }
+        return status;
+    }
+    */
     public void Firestore() {
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
