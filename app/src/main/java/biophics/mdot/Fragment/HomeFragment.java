@@ -11,11 +11,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import com.ebanx.swipebtn.OnStateChangeListener;
 import com.ebanx.swipebtn.SwipeButton;
@@ -122,13 +124,13 @@ public class HomeFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_home, container, false);
         SwipeButton swipeButton = v.findViewById(R.id.swipe_btn);
+        ImageButton ibtn_config = v.findViewById(R.id.ibtn_config);
         swipeButton.setOnStateChangeListener(new OnStateChangeListener() {
             @Override
             public void onStateChange(boolean active) {
@@ -138,8 +140,20 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        ibtn_config.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                ConfigFragment configFragment = new ConfigFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, configFragment).addToBackStack(null).commit();
+            }
+        });
 
         return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
     }
 
     public void createNotification(String aMessage, Context context) {
@@ -222,6 +236,10 @@ public class HomeFragment extends Fragment {
         return status;
     }
     */
+
+    public void Notification_Alert() {
+    }
+
     public void Firestore() {
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
