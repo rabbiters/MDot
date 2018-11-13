@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import biophics.mdot.FireStore.FireStore_Insert;
 import biophics.mdot.R;
 
 /**
@@ -70,14 +71,14 @@ public class ConfigFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_config, container, false);
         ImageButton ibtn_add = v.findViewById(R.id.ibtn_add);
         ImageButton ibtn_cancle = v.findViewById(R.id.ibtn_cancle);
-
         ibtn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                FireStore_Insert.Firestore_Update_Config();
                 GoBack();
             }
         });
-
         ibtn_cancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

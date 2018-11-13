@@ -9,11 +9,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,23 +18,13 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import com.ebanx.swipebtn.OnStateChangeListener;
 import com.ebanx.swipebtn.SwipeButton;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
-
 import biophics.mdot.Activity.MainActivity;
+import biophics.mdot.FireStore.FireStore_Insert;
+import biophics.mdot.FireStore.FireStore_Read;
 import biophics.mdot.R;
-
-import static android.support.constraint.Constraints.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -129,13 +116,14 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_home, container, false);
+        FireStore_Read.Read_Config_Frist();
         SwipeButton swipeButton = v.findViewById(R.id.swipe_btn);
         ImageButton ibtn_config = v.findViewById(R.id.ibtn_config);
         swipeButton.setOnStateChangeListener(new OnStateChangeListener() {
             @Override
             public void onStateChange(boolean active) {
                 createNotification("กินยาด้วยครับ", getActivity());
-                Firestore();
+                insert_dot();
                 Toast.makeText(getActivity(), "True.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -210,23 +198,6 @@ public class HomeFragment extends Fragment {
         notifManager.notify(NOTIFY_ID, notification);
     }
 
-    public String getValue() {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        String date = df.format(Calendar.getInstance().getTime());
-        return date;
-    }
-
-    public String getTime() {
-        DateFormat df = new SimpleDateFormat("HH:mm:ss");
-        String date = df.format(Calendar.getInstance().getTime());
-        return date;
-    }
-
-    public String getTimeStamp() {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String date = df.format(Calendar.getInstance().getTime());
-        return date;
-    }
 /*
     public String getStatus(String status_m){
         String status = "0";
@@ -238,8 +209,13 @@ public class HomeFragment extends Fragment {
     */
 
     public void Notification_Alert() {
+
     }
 
+    public void insert_dot() {
+        FireStore_Insert.Firestore_Insert_Dot("Pye", "1234", "2", "1");
+    }
+    /*
     public void Firestore() {
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -272,4 +248,6 @@ public class HomeFragment extends Fragment {
                 });
 
     }
+    */
+
 }
