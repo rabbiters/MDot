@@ -2,19 +2,15 @@ package biophics.mdot.FireStore;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import biophics.mdot.Utility.GetDateTime;
-
 import static android.support.constraint.Constraints.TAG;
 
 public class FireStore_Insert {
