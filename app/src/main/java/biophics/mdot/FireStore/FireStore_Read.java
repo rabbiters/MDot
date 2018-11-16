@@ -1,6 +1,5 @@
 package biophics.mdot.FireStore;
 
-import android.se.omapi.Session;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -37,6 +36,28 @@ public class FireStore_Read {
                         }
                         if (i == 0) {
                             FireStore_Insert.Firestore_Insert_Config();
+                        }
+                    }
+                });
+    }
+
+    public static void Read_Config_Id() {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("TBL_TB_CONFIG").whereEqualTo("TB_INFO_TELL", firebaseUser.getPhoneNumber())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if (document.getId() != null) {
+                                    GetSession.setValue("g_id", document.getId());
+                                    GetSession.setValue("Time", (String) document.get("TB_CONFIG_TIME_ALEART"));
+                                }
+                            }
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
                         }
                     }
                 });

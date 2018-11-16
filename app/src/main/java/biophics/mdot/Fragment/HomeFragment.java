@@ -26,6 +26,8 @@ import biophics.mdot.FireStore.FireStore_Insert;
 import biophics.mdot.FireStore.FireStore_Read;
 import biophics.mdot.R;
 
+import static biophics.mdot.FireStore.FireStore_Read.Read_Config_Id;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -116,6 +118,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_home, container, false);
+        Read_Config_Id();
         FireStore_Read.Read_Config_Frist();
         SwipeButton swipeButton = v.findViewById(R.id.swipe_btn);
         ImageButton ibtn_config = v.findViewById(R.id.ibtn_config);

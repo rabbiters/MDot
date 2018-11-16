@@ -77,11 +77,12 @@ public class FireStore_Insert {
 
     }
 
-    public static void Firestore_Update_Config() {
+    public static void Firestore_Update_Config(String getId, String Hours, String Minute) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("TBL_TB_CONFIG").document()
+        db.collection("TBL_TB_CONFIG").document(getId)
                 .update(
-                        "TB_CONFIG_STATUS", "88"
+                        "TB_CONFIG_STATUS", "1",
+                        "TB_CONFIG_TIME_ALEART", Hours + ":" + Minute
                 );
     }
 }

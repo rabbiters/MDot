@@ -3,15 +3,32 @@ package biophics.mdot.Fragment;
 import android.content.Context;
 import android.media.Image;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.se.omapi.Session;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TimePicker;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import biophics.mdot.FireStore.FireStore_Insert;
 import biophics.mdot.R;
+import biophics.mdot.Utility.GetSession;
+
+import static android.support.constraint.Constraints.TAG;
+import static biophics.mdot.FireStore.FireStore_Read.Read_Config_Id;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +47,7 @@ public class ConfigFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String getId;
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,13 +87,23 @@ public class ConfigFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_config, container, false);
+
+        final TimePicker alarmTimePicker = v.findViewById(R.id.alarmTimePicker);
+        //alarmTimePicker.setHour(GetSession.getValue("Time"));
+
+        Log.w(TAG, "DOC::::" + GetSession.getValue("Time"));
         ImageButton ibtn_add = v.findViewById(R.id.ibtn_add);
         ImageButton ibtn_cancle = v.findViewById(R.id.ibtn_cancle);
         ibtn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                FireStore_Insert.Firestore_Update_Config();
+                int hour = 0;
+                int minute = 0;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    hour = alarmTimePicker.getHour();
+                    minute = alarmTimePicker.getMinute();
+                }
+                FireStore_Insert.Firestore_Update_Config(GetSession.getValue("g_id"), hour + "", minute + "");
                 GoBack();
             }
         });
@@ -85,8 +113,6 @@ public class ConfigFragment extends Fragment {
                 GoBack();
             }
         });
-
-
         return v;
     }
 
