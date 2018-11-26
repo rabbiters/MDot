@@ -92,6 +92,7 @@ public class ConfigFragment extends Fragment {
         //alarmTimePicker.setHour(GetSession.getValue("Time"));
 
         Log.w(TAG, "DOC::::" + GetSession.getValue("Time"));
+        Log.w(TAG, "CONFIG_CHECK_1111::::" + GetSession.getValue("g_id"));
         ImageButton ibtn_add = v.findViewById(R.id.ibtn_add);
         ImageButton ibtn_cancle = v.findViewById(R.id.ibtn_cancle);
         ibtn_add.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +104,8 @@ public class ConfigFragment extends Fragment {
                     hour = alarmTimePicker.getHour();
                     minute = alarmTimePicker.getMinute();
                 }
+
+                Log.w(TAG, "CONFIG_CHECK::::" + GetSession.getValue("g_id"));
                 FireStore_Insert.Firestore_Update_Config(GetSession.getValue("g_id"), hour + "", minute + "");
                 GoBack();
             }

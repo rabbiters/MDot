@@ -3,6 +3,7 @@ package biophics.mdot.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -11,6 +12,10 @@ import android.widget.Spinner;
 import com.google.firebase.auth.FirebaseAuth;
 
 import biophics.mdot.R;
+import biophics.mdot.Utility.GetImei;
+import biophics.mdot.Utility.GetSession;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class LoginByPhoneActivity extends AppCompatActivity {
 
@@ -21,7 +26,8 @@ public class LoginByPhoneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_by_phone);
-
+        GetSession.setValue("Device_Imei", GetImei.getUniqueIMEIId(this));
+        Log.w(TAG, "Imei::::" + GetSession.getValue("Device_Imei"));
         spinner = findViewById(R.id.spinnerCountries);
         spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, CountryData.countryNames));
         editText = findViewById(R.id.editTextPhone);

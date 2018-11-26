@@ -18,14 +18,12 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import com.ebanx.swipebtn.OnStateChangeListener;
 import com.ebanx.swipebtn.SwipeButton;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import biophics.mdot.Activity.MainActivity;
 import biophics.mdot.FireStore.FireStore_Insert;
 import biophics.mdot.FireStore.FireStore_Read;
 import biophics.mdot.R;
-
+import biophics.mdot.Utility.GetImei;
+import biophics.mdot.Utility.GetSession;
 import static biophics.mdot.FireStore.FireStore_Read.Read_Config_Id;
 
 /**
@@ -118,6 +116,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_home, container, false);
+
+        GetSession.setValue("Device_Imei", GetImei.getUniqueIMEIId(getActivity()));
         Read_Config_Id();
         FireStore_Read.Read_Config_Frist();
         SwipeButton swipeButton = v.findViewById(R.id.swipe_btn);
@@ -216,7 +216,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void insert_dot() {
-        FireStore_Insert.Firestore_Insert_Dot("Pye", "1234", "2", "1");
+        FireStore_Insert.Firestore_Insert_Dot("Pye", "", "1", "1");
     }
     /*
     public void Firestore() {
