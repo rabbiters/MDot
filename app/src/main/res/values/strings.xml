@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">MDot</string>
+
+    <!--Common-->
+    <string name="show_loading">กำลังโหลดข้อมูล</string>
+    <string name="btn_close">ปิด</string>
+    <string name="error_network_not_connected">ไม่มีการเชื่อมต่ออินเทอร์เนต</string>
+
+    <!--Login by phone activity-->
+    <string name="tv_welcome">ขอต้อนรับสู่ระบบ MDOT</string>
+    <string name="et_phone_number">โปรดใส่เบอร์โทรศัพท์มือถือ 10 หลัก</string>
+    <string name="btn_submit_phone_number">เข้าสู่ระบบ</string>
+
+    <!--Login verify activity-->
+    <string name="error_verify_code">โปรดใส่รหัสยืนยันตัวตน 6 หลัก</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -9,9 +23,7 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

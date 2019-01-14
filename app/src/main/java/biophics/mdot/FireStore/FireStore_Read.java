@@ -19,7 +19,8 @@ public class FireStore_Read {
     public static void Read_Config_Frist() {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("TBL_TB_CONFIG").whereEqualTo("TB_INFO_TELL", firebaseUser.getPhoneNumber())
+        db.collection("TBL_TB_CONFIG")
+                .whereEqualTo("TB_INFO_TELL", firebaseUser.getPhoneNumber())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -44,7 +45,8 @@ public class FireStore_Read {
     public static void Read_Config_Id() {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("TBL_TB_CONFIG").whereEqualTo("TB_INFO_TELL", firebaseUser.getPhoneNumber())
+        db.collection("TBL_TB_CONFIG")
+                .whereEqualTo("TB_INFO_TELL", firebaseUser.getPhoneNumber())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -66,7 +68,8 @@ public class FireStore_Read {
     public static void Read_Carlendar() {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("TBL_TB_DOT").whereEqualTo("TB_INFO_TELL", firebaseUser.getPhoneNumber())
+        db.collection("TBL_TB_DOT")
+                .whereEqualTo("TB_INFO_TELL", firebaseUser.getPhoneNumber())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
