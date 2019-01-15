@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "827869507891-9iika695v95efsa3sd9i4079q4e6cgg9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "biophics.mdot",
+            "certificate_hash": "1623923de948e9c2c60a40251906ac1484352309"
+          }
+        },
+        {
           "client_id": "827869507891-0kid2b4qlso82k9ujhrfe9rm0luli451.apps.googleusercontent.com",
           "client_type": 3
         }

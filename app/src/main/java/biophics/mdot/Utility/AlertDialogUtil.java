@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 
 import biophics.mdot.Manager.Contextor;
 import biophics.mdot.R;
@@ -24,9 +23,9 @@ public class AlertDialogUtil {
     }
 
     public static void setupTextSize(AlertDialog dialog) {
-        float textSize = Contextor.getInstance().getContext().getResources().getDimension(R.dimen.alert_dialog_text_size);
-        TextView textView = dialog.findViewById(android.R.id.message);
-        textView.setTextSize(textSize);
+//        float textSize = Contextor.getInstance().getContext().getResources().getDimension(R.dimen.alert_dialog_text_size);
+//        TextView textView = dialog.findViewById(android.R.id.message);
+//        textView.setTextSize(textSize);
     }
 
     public static void showLoading(Activity activity) {

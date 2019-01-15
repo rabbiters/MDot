@@ -9,6 +9,7 @@ import android.widget.EditText;
 import com.google.firebase.auth.FirebaseAuth;
 
 import biophics.mdot.R;
+import biophics.mdot.Utility.KeyboardUtil;
 
 public class LoginByPhoneActivity extends AppCompatActivity {
 
@@ -46,6 +47,7 @@ public class LoginByPhoneActivity extends AppCompatActivity {
 
                 String phoneNumber = THAILAND_CODE + number;
 
+                KeyboardUtil.hideKeyboard(LoginByPhoneActivity.this);
                 Intent intent = new Intent(LoginByPhoneActivity.this, LoginVerifyActivity.class);
                 intent.putExtra("phone_number", phoneNumber);
                 startActivity(intent);

@@ -59,7 +59,7 @@ public class LoginVerifyActivity extends AppCompatActivity {
         AlertDialogUtil.showLoading(this);
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phoneNumber,
-                60,
+                10,
                 TimeUnit.SECONDS,
 //                TaskExecutors.MAIN_THREAD,
                 this,
